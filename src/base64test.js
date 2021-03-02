@@ -37,7 +37,7 @@ class App extends React.Component {
         multiple={ true }
         onDone={ this.getFiles.bind(this) } />
        { this.state.Files.map((file,i) => {
-            return <img key={i} src={file.base64} />
+            return <video  key={i} controls src={file.base64} />
           }) }
           { console.log(this.state.Files)}
       

@@ -1,0 +1,64 @@
+
+import axios from 'axios';
+ 
+import React,{Component, useState} from 'react';
+import { PickerOverlay } from 'filestack-react';
+ 
+class UploadApp extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+    state = {
+      receivedLink: []
+    };
+    
+    
+    onFileChange = event => {
+      this.setState({ receivedLink: event.target.files[0] });
+      console.log(event.target.files[0]);
+    
+    };
+    
+    
+    onFileUpload = () => {
+      
+      const formData = new FormData();
+      formData.append(
+      "myFile",
+      this.state.receivedLink
+    );
+    console.log(this.state.receivedLink);
+
+      axios.post("http://localhost:4000/upload", formData);
+    };
+
+    render() {
+    
+      return (
+        <div>
+
+          <PickerOverlay
+          apikey={'AxjXbdiCNTkuFSyNvFyHKz'}
+          onSuccess={ (res) => {
+            console.log(res);
+            const info = res;
+            console.log(info)
+            this.setState({ info });
+          }}
+          />  
+
+          <button onclick={() => console.log(this.state.receivedLink)}>
+              Activate Lasers
+          </button>
+        </div>
+      );
+    }
+  }
+ 
+  export default UploadApp;

@@ -51,7 +51,7 @@ var imageSchema = new mongoose.Schema({
 
 var Image = mongoose.model('Image', imageSchema);
 
-async function createserver(){
+async function addImage(){
     const image = new Image({
         imageName: 'abc',
         imageData: 'asfafsasfasfafsafa'
@@ -62,6 +62,6 @@ async function createserver(){
     console.log(result);
     }
 
-createserver();
+addImage();
 
 module.exports = Image;

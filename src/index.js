@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './base64test';
 import reportWebVitals from './reportWebVitals';
+import UploadApp from './uploadfile';
+import Upload from './upload';
+import Filestack from './Filestack';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Filestack />
   </React.StrictMode>,
   document.getElementById('root')
 );
